@@ -18,7 +18,7 @@ module.exports = class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <h2>Edit-Bot</h2>
+        <p className='title center'>Edit-Bot</p>
         <Interpretations interpretations={this.state.interpretations} />
       </div>
     );

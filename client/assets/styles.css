@@ -3,10 +3,31 @@ body {
   font-family: sans-serif;
   color: black;
   margin: 0;
+  font-size: 20px;
 }
 
-h2 {
+.title {
+
+}
+
+.center {
   text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.gray {
+  color: gray;
+}
+
+.small {
+  font-size: 10px;
 }
 
 .App {
@@ -14,13 +35,21 @@ h2 {
   margin: auto;
 }
 
+.Interpretations {
+  border: 1px solid black;
+}
+
 .InterpretationEntry {
   width: 90%;
-  border: 1px solid black;
-  clear: both;
+  box-shadow: 1px 1px 1px 1px black;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
 .Triggers, .Responses {
-  width: 45%;
-  float: left;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 40%;
 }

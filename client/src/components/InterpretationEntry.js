@@ -1,14 +1,26 @@
 const React = require('react');
+const TriggerEntry = require('./TriggerEntry.js');
+const ResponseEntry = require('./ResponseEntry.js');
 
 module.exports = function InterpretationEntry(props) {
   return (
     <div className='InterpretationEntry'>
-      <h2>Interpretation Entry</h2>
+      <p className='left gray small'>{props.interpretation.id}</p>
       <div className='Triggers'>
-        <h2>Triggers</h2>
+        <p className='title center'>When someone types:</p>
+        {
+          props.interpretation.triggers.map(function (trigger) {
+            return <TriggerEntry trigger={trigger}/>
+          })
+        }
       </div>
       <div className='Responses'>
-        <h2>Responses</h2>
+        <p className='title center'>I will respond with...</p>
+        {
+          props.interpretation.responses.map(function (response) {
+            return <ResponseEntry response={response}/>
+          })
+        }
       </div>
     </div>
   );
