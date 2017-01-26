@@ -6,7 +6,7 @@ module.exports = function Interpretations(props) {
     <div className='Interpretations'>
       {
         props.interpretations.map(function(interpretation) {
-          return <InterpretationEntry interpretation={interpretation} />;
+          return <InterpretationEntry interpretation={interpretation} dispatch={props.dispatch}/>;
         })
       }
     </div>
