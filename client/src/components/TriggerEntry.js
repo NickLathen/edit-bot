@@ -5,5 +5,5 @@ module.exports = function TriggerEntry(props) {
     <div>
       <p>{props.trigger.text}</p>
     </div>
-  )
-}
+  );
+};

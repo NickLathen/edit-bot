@@ -10,7 +10,7 @@ module.exports = function InterpretationEntry(props) {
         <p className='title center'>When someone types:</p>
         {
           props.interpretation.triggers.map(function (trigger) {
-            return <TriggerEntry trigger={trigger}/>
+            return <TriggerEntry trigger={trigger}/>;
           })
         }
       </div>
@@ -18,10 +18,10 @@ module.exports = function InterpretationEntry(props) {
         <p className='title center'>I will respond with...</p>
         {
           props.interpretation.responses.map(function (response) {
-            return <ResponseEntry response={response}/>
+            return <ResponseEntry response={response}/>;
           })
         }
       </div>
     </div>
   );
-}
+};

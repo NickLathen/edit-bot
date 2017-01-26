@@ -5,5 +5,5 @@ module.exports = function ResponseEntry(props) {
     <div>
       <p>{props.response.text}</p>
     </div>
-  )
-}
+  );
+};

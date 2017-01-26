@@ -7,4 +7,4 @@ module.exports = {
     req.open('GET', url);
     req.send();
   }
-}
+};

@@ -1,5 +1,5 @@
 const React = require('react');
-const Interpretations = require('./Interpretations.js')
+const Interpretations = require('./Interpretations.js');
 
 module.exports = class App extends React.Component {
   constructor(props) {
@@ -23,4 +23,4 @@ module.exports = class App extends React.Component {
       </div>
     );
   }
-}
+};
