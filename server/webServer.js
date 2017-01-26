@@ -7,8 +7,12 @@ const mockData = require(appDirectory + '/test/mockInterpretations.js');
 
 app.use(express.static(appDirectory + '/client/build'));
 
-app.get('/', (req, res) => {
-  res.sendFile(appDirectory + '/client/src/index.html');
+app.get('/', (request, response) => {
+  response.sendFile(appDirectory + '/client/src/index.html');
+});
+
+app.get('/api/interpretations', (request, response) => {
+  response.send(JSON.stringify(mockData));
 });
 
 app.listen(port, () => {
