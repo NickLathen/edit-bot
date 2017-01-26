@@ -1,0 +1,26 @@
+body {
+  overflow: hidden;
+  font-family: sans-serif;
+  color: black;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+.App {
+  width: 900px;
+  margin: auto;
+}
+
+.InterpretationEntry {
+  width: 90%;
+  border: 1px solid black;
+  clear: both;
+}
+
+.Triggers, .Responses {
+  width: 45%;
+  float: left;
+}

@@ -5,7 +5,7 @@ const appDirectory = __dirname.slice(0, __dirname.length - 7); //base app direct
 
 const mockData = require(appDirectory + '/test/mockInterpretations.js');
 
-app.use(express.static(appDirectory + '/client/build'));
+app.use(express.static(appDirectory + '/client'));
 
 app.get('/', (request, response) => {
   response.sendFile(appDirectory + '/client/src/index.html');

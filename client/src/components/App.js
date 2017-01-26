@@ -1,9 +1,10 @@
 const React = require('react');
+const Interpretations = require('./Interpretations.js')
 
 module.exports = class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {props};
+    this.state = {interpretations: props.interpretations};
   }
 
   componentDidMount() {
@@ -16,8 +17,9 @@ module.exports = class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello, world!</h1>
+      <div className='App'>
+        <h2>Edit-Bot</h2>
+        <Interpretations interpretations={this.state.interpretations} />
       </div>
     );
   }
