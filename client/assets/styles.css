@@ -72,9 +72,12 @@ body {
   margin-right: 2%;
 }
 
+.padleft3 {
+  padding-left: 3px;
+}
+
 .editable-entry {
   box-shadow: 1px 1px 1px 1px black;
-  padding-left: 10px;
   margin-bottom: 3px;
 }
 
@@ -89,6 +92,6 @@ body {
   margin-top: 20px;
 }
 
-.InterpretationEntry {
+.ResponseTable {
   width: 90%;
 }

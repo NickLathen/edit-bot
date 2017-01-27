@@ -24,10 +24,6 @@ module.exports = [
         id: 2,
         text: 'response2'
       },
-      {
-        id: 3,
-        text: 'response3'
-      },
     ]
   },
   { 
@@ -40,10 +36,6 @@ module.exports = [
       {
         id: 5,
         text: 'trigger5'
-      },
-      {
-        id: 6,
-        text: 'trigger6'
       },
     ],
     responses: [
