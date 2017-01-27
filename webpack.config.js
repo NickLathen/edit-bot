@@ -3,11 +3,16 @@ const webpack = require('webpack');
 const usePlugins = false;
 var PLUGINS = [];
 if (usePlugins) {
+  PLUGINS.push(new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
+  }));
   PLUGINS.push(new webpack.optimize.UglifyJsPlugin({
     mangle: {
       except: ['$super', '$', 'exports', 'require']
     },
-    sourcemap: true
+    sourcemap: false
   }));
 }
 
