@@ -1,5 +1,5 @@
 body {
-  overflow: hidden;
+  overflow: scroll;
   font-family: sans-serif;
   color: black;
   margin: 0;

@@ -13,7 +13,11 @@ module.exports = function InterpretationEntry(props) {
         <div className='tall'>
           {
             props.interpretation.triggers.map(function (trigger) {
-              return <TriggerEntry key={Math.random()} interpretation={props.interpretation} trigger={trigger} dispatch={props.dispatch}/>;
+              var key = trigger.id + trigger.text;
+              if (trigger.id === 'new') {
+                key = Math.random();
+              }
+              return <TriggerEntry key={key} interpretation={props.interpretation} trigger={trigger} dispatch={props.dispatch}/>;
             })
           }
         </div>
@@ -26,7 +30,11 @@ module.exports = function InterpretationEntry(props) {
         <div className='ResponseTable tall inline top'>
           {
             props.interpretation.responses.map(function (response) {
-              return <ResponseEntry key={Math.random()} interpretation={props.interpretation} response={response} dispatch={props.dispatch} />;
+              var key = response.id + response.text;
+              if (response.id === 'new') {
+                key = Math.random();
+              }
+              return <ResponseEntry key={key} interpretation={props.interpretation} response={response} dispatch={props.dispatch} />;
             })
           }
         </div>
