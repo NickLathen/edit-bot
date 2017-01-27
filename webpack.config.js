@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-const usePlugins = false;
+const usePlugins = true;
 var PLUGINS = [];
 if (usePlugins) {
   PLUGINS.push(new webpack.DefinePlugin({

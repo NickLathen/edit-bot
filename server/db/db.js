@@ -8,6 +8,6 @@
 // c) In the PostgresSQL shell, enter 'CREATE DATABASE editbot;'
 
 var Sequelize = require('sequelize');
-var db = new Sequelize('postgres://127.0.0.1:5432/editbot');
+var db = new Sequelize(process.env.DATABASE_URL || 'postgresql://localhost:5432/editbot');
 
 module.exports = db;
