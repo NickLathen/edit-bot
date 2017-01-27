@@ -11,7 +11,9 @@ module.exports = function Interpretations(props) {
     responses: [],
     triggers: []
   };
+  
   props.interpretations.push(blankInterpretation);
+  
   props.interpretations.forEach(function(interpretation) {
     interpretation.responses.push(blank);
     interpretation.triggers.push(blank);

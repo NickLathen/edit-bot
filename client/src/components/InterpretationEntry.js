@@ -13,7 +13,7 @@ module.exports = function InterpretationEntry(props) {
         <div className='tall'>
           {
             props.interpretation.triggers.map(function (trigger) {
-              return <TriggerEntry key={trigger.id} trigger={trigger} dispatch={props.dispatch}/>;
+              return <TriggerEntry key={trigger.id} interpretation={props.interpretation} trigger={trigger} dispatch={props.dispatch}/>;
             })
           }
         </div>
@@ -26,7 +26,7 @@ module.exports = function InterpretationEntry(props) {
         <div className='ResponseTable tall inline top'>
           {
             props.interpretation.responses.map(function (response) {
-              return <ResponseEntry key={response.id} response={response} dispatch={props.dispatch} />;
+              return <ResponseEntry key={response.id} interpretation={props.interpretation} response={response} dispatch={props.dispatch} />;
             })
           }
         </div>

@@ -8,20 +8,21 @@ module.exports = class App extends React.Component {
 
     const initialState = {interpretations: props.interpretations}; 
     this.store = Redux.createStore(this.reducer, initialState);
-    this.store.subscribe(this.setState.bind(null, {}));
+    this.store.subscribe(this.setState.bind(this, {}));
   }
 
   reducer(state = {}, action) {
     const newState = JSON.parse(JSON.stringify(state));
+    if (action.type === 'newState') {
+      return action.newState;
+    }
     return newState;
   }
 
   componentDidMount() {
-
   }
 
   componentWillUnmount() {
-
   }
 
   render() {

@@ -6,5 +6,11 @@ module.exports = {
     });
     req.open('GET', url);
     req.send();
+  },
+  editTrigger: function editTrigger(interpretationId, triggerId, text, callback) {
+    callback();
+  },
+  editResponse: function editResponse() {
+
   }
 };
