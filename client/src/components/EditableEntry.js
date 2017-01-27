@@ -13,14 +13,14 @@ module.exports = class EditableEntry extends React.Component {
     const remove = this.props.remove;
     
     const xButton = ReactDOM.findDOMNode(this).children[0];
+    const element = ReactDOM.findDOMNode(this).children[1];
     if (id === 'new') {
       xButton.hidden = true;
     }
     xButton.addEventListener('click', function(event) {
-      remove();
+      remove(element);
     });
 
-    const element = ReactDOM.findDOMNode(this).children[1];
     element.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         event.preventDefault();

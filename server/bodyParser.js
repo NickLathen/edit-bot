@@ -1,5 +1,5 @@
 module.exports = function bodyParser(request, response, next) {
-  if (request.method !== 'POST') { return next(); }
+  if (request.method === 'GET') { return next(); }
   var requestBody = [];
   request.on('data', function(chunk) {
     requestBody.push(chunk);

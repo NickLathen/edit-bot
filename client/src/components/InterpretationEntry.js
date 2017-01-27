@@ -31,8 +31,17 @@ module.exports = function InterpretationEntry(props) {
                   });
                 });
               };
-              const remove = function remove() {
-              
+              const remove = function remove(element) {
+                request.deleteTrigger(interpretationId, triggerId, function() {
+                  request.get('/api/interpretations', function(data) {
+                    data = JSON.parse(data);
+                    element.innerText = '';
+                    props.dispatch({
+                      type: 'newState',
+                      newState: {interpretations: data}
+                    });
+                  });
+                });
               };
               return <EditableEntry key={trigger.id + trigger.text} id={trigger.id} initialText={trigger.text} edit={edit} remove={remove}/>;              
             })
@@ -61,8 +70,17 @@ module.exports = function InterpretationEntry(props) {
                   });
                 });
               };
-              const remove = function remove() {
-              
+              const remove = function remove(element) {
+                request.deleteResponse(interpretationId, responseId, function() {
+                  request.get('/api/interpretations', function(data) {
+                    data = JSON.parse(data);
+                    element.innerText = '';
+                    props.dispatch({
+                      type: 'newState',
+                      newState: {interpretations: data}
+                    });
+                  });
+                });
               };
               return <EditableEntry key={response.id + response.text} id={response.id} initialText={response.text} edit={edit} remove={remove}/>;
             })

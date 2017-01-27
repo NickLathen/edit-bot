@@ -48,12 +48,30 @@ app.post('/api/responses', (request, response) => {
   });
 });
 
+app.delete('/api/responses', (request, response) => {
+  const body = request.body;
+  const interpretationId = body.interpretationId;
+  const responseId = body.responseId;
+  responseController.deleteResponse(interpretationId, responseId, function() {
+    response.sendStatus(200);
+  });
+});
+
 app.post('/api/triggers', (request, response) => {
   const body = request.body;
   const interpretationId = body.interpretationId;
   const triggerId = body.triggerId;
   const text = body.text;
   triggerController.addTrigger(interpretationId, triggerId, text, function() {
+    response.sendStatus(200);
+  });
+});
+
+app.delete('/api/triggers', (request, response) => {
+  const body = request.body;
+  const interpretationId = body.interpretationId;
+  const triggerId = body.triggerId;
+  triggerController.deleteTrigger(interpretationId, triggerId, function() {
     response.sendStatus(200);
   });
 });
