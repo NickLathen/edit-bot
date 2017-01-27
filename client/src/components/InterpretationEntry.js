@@ -3,6 +3,10 @@ const TriggerEntry = require('./TriggerEntry.js');
 const ResponseEntry = require('./ResponseEntry.js');
 const Avatar = require('./Avatar.js');
 
+const sortById = function(a, b) {
+  return a.id - b.id;
+};
+
 module.exports = function InterpretationEntry(props) {
 
   return (
@@ -12,7 +16,7 @@ module.exports = function InterpretationEntry(props) {
         <p className='center flat'>When someone says</p>
         <div className='tall'>
           {
-            props.interpretation.triggers.map(function (trigger) {
+            props.interpretation.triggers.sort(sortById).map(function (trigger) {
               return <TriggerEntry key={trigger.id + trigger.text} interpretation={props.interpretation} trigger={trigger} dispatch={props.dispatch}/>;
             })
           }
@@ -25,7 +29,7 @@ module.exports = function InterpretationEntry(props) {
         </div>
         <div className='ResponseTable tall inline top'>
           {
-            props.interpretation.responses.map(function (response) {
+            props.interpretation.responses.sort(sortById).map(function (response) {
               return <ResponseEntry key={response.id + response.text} interpretation={props.interpretation} response={response} dispatch={props.dispatch} />;
             })
           }
