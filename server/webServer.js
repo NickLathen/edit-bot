@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('./bodyParser.js');
 const port = 9999;
 const appDirectory = __dirname.slice(0, __dirname.length - 7); //base app directory
-
-const mockData = require(appDirectory + '/test/mockInterpretations.js');
+const responseController = require('./db/controllers/responseController.js');
+const triggerController = require('./db/controllers/triggerController.js');
 
 app.use(bodyParser);
 app.use(express.static(appDirectory + '/client'));
@@ -14,15 +14,48 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/interpretations', (request, response) => {
-  response.send(JSON.stringify(mockData));
+  responseController.getAll(function(responses) {
+    triggerController.getAll(function(triggers) {
+      const interpretationsMap = {};
+      const interpretations = [];
+      responses.forEach(function(botResponse) {
+        if (!interpretationsMap[botResponse.interpretationId]) {
+          interpretationsMap[botResponse.interpretationId] = {id: botResponse.interpretationId, responses: [], triggers: []};
+        }
+        interpretationsMap[botResponse.interpretationId].responses.push({id: botResponse.id, text: botResponse.text});
+      });
+      triggers.forEach(function(trigger) {
+        if (!interpretationsMap[trigger.interpretationId]) {
+          interpretationsMap[trigger.interpretationId] = {id: trigger.interpretationId, responses: [], triggers: []};
+        }
+        interpretationsMap[trigger.interpretationId].triggers.push({id: trigger.id, text: trigger.text});
+      });
+      for (var key in interpretationsMap) {
+        interpretations.push(interpretationsMap[key]);
+      }
+      response.send(JSON.stringify(interpretations));
+    });
+  });
 });
 
 app.post('/api/responses', (request, response) => {
-  response.send(200);
+  const body = request.body;
+  const interpretationId = body.interpretationId;
+  const responseId = body.responseId;
+  const text = body.text;
+  responseController.addResponse(interpretationId, responseId, text, function() {
+    response.sendStatus(200);
+  });
 });
 
 app.post('/api/triggers', (request, response) => {
-  response.send(200);
+  const body = request.body;
+  const interpretationId = body.interpretationId;
+  const triggerId = body.triggerId;
+  const text = body.text;
+  triggerController.addTrigger(interpretationId, triggerId, text, function() {
+    response.sendStatus(200);
+  });
 });
 
 app.listen(port, () => {
