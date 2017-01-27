@@ -8,9 +8,20 @@ const sortById = function(a, b) {
 };
 
 module.exports = function InterpretationEntry(props) {
-
+  const remove = function remove() {
+    request.deleteInterpretation(props.interpretation.id, function() {
+      request.get('/api/interpretations', function(data) {
+        data = JSON.parse(data);
+        props.dispatch({
+          type: 'newState',
+          newState: {interpretations: data}
+        });
+      });
+    });
+  };
   return (
     <div className='inset short top'>
+      <button onClick={remove} hidden={props.interpretation.id === 'new'} className='xButton'></button>
       <p className='left gray small flat'>{props.interpretation.id}</p>
       <div className='inline column13 top'>
         <p className='center flat'>When someone says</p>

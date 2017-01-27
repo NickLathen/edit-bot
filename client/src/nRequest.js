@@ -56,5 +56,16 @@ module.exports = {
     });
     request.open('DELETE', '/api/responses');
     request.send(JSON.stringify(data));
+  },
+  deleteInterpretation: function deleteInterpretation(interpretationId, callback) {
+    const data = {
+      interpretationId
+    };
+    const request = new XMLHttpRequest();
+    request.addEventListener('load', function() {
+      callback(this.responseText);
+    });
+    request.open('DELETE', '/api/interpretations');
+    request.send(JSON.stringify(data));
   }
 };

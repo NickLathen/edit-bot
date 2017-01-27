@@ -5,6 +5,7 @@ const port = 9999;
 const appDirectory = __dirname.slice(0, __dirname.length - 7); //base app directory
 const responseController = require('./db/controllers/responseController.js');
 const triggerController = require('./db/controllers/triggerController.js');
+const interpretationController = require('./db/controllers/interpretationController.js');
 
 app.use(bodyParser);
 app.use(express.static(appDirectory + '/client'));
@@ -72,6 +73,14 @@ app.delete('/api/triggers', (request, response) => {
   const interpretationId = body.interpretationId;
   const triggerId = body.triggerId;
   triggerController.deleteTrigger(interpretationId, triggerId, function() {
+    response.sendStatus(200);
+  });
+});
+
+app.delete('/api/interpretations', (request, response) => {
+  const body = request.body;
+  const interpretationId = body.interpretationId;
+  interpretationController.deleteInterpretation(interpretationId, function() {
     response.sendStatus(200);
   });
 });
