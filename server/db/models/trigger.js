@@ -15,6 +15,6 @@ var trigger = db.define('trigger', {
   },
 });
 
-trigger.sync();
+trigger.sync({force: true});
 
 module.exports = trigger;

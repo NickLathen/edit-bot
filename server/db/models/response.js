@@ -15,6 +15,6 @@ var response = db.define('response', {
   },
 });
 
-response.sync();
+response.sync({force: true});
 
 module.exports = response;

@@ -26,7 +26,7 @@ module.exports = class App extends React.Component {
     this.interval = setInterval(function() {
       request.get('/api/interpretations', function(data) {
         data = JSON.parse(data);
-        dispatch({
+        this.store.dispatch({
           type: 'newState',
           newState: {interpretations: data}
         });
