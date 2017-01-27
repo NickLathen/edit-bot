@@ -12,7 +12,10 @@ module.exports = class TriggerEntry extends React.Component {
     const interpretationId = props.interpretation.id;
     const triggerId = props.trigger.id;
     const dispatch = props.dispatch;
-    var el = ReactDOM.findDOMNode(this).children[0];
+    if (triggerId === 'new') {
+      ReactDOM.findDOMNode(this).children[0].hidden = true;
+    }
+    var el = ReactDOM.findDOMNode(this).children[1];
     el.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         event.preventDefault();
@@ -45,6 +48,7 @@ module.exports = class TriggerEntry extends React.Component {
     const props = this.props;
     return (
       <div className='editable-entry inset short'>
+        <button className='xButton'></button>
         <p className='flat padleft3' contentEditable>{props.trigger.text}</p>
       </div>
     );

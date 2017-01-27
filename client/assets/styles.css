@@ -95,3 +95,14 @@ body {
 .ResponseTable {
   width: 90%;
 }
+
+.xButton {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;
+  background-color: red;
+  height: 8px;
+  width: 8px;
+  float: right;
+  text-align: top;
+}

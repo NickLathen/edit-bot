@@ -12,7 +12,10 @@ module.exports = class ResponseEntry extends React.Component {
     const interpretationId = props.interpretation.id;
     const responseId = props.response.id;
     const dispatch = props.dispatch;
-    var el = ReactDOM.findDOMNode(this).children[0];
+    if (responseId === 'new') {
+      ReactDOM.findDOMNode(this).children[0].hidden = true;
+    }
+    var el = ReactDOM.findDOMNode(this).children[1];
     el.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         event.preventDefault();
@@ -45,6 +48,7 @@ module.exports = class ResponseEntry extends React.Component {
     const props = this.props;
     return (
       <div className='editable-entry inset short'>
+        <button className='xButton'></button>
         <p className='flat padleft3' contentEditable>{props.response.text}</p>
       </div>
     );
