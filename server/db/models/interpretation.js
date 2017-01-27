@@ -9,6 +9,6 @@ var interpretation = db.define('interpretation', {
   }
 });
 
-interpretation.sync({force: true});
+interpretation.sync();
 
 module.exports = interpretation;

@@ -4,6 +4,11 @@ const Avatar = require('./Avatar.js');
 const request = require('./../nRequest.js');
 
 const sortById = function(a, b) {
+  if (a.id === 'new') {
+    return 1;
+  } else if (b.id === 'new') {
+    return -1
+  }
   return a.id - b.id;
 };
 
