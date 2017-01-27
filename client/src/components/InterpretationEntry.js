@@ -1,7 +1,7 @@
 const React = require('react');
-const TriggerEntry = require('./TriggerEntry.js');
-const ResponseEntry = require('./ResponseEntry.js');
+const EditableEntry = require('./EditableEntry.js');
 const Avatar = require('./Avatar.js');
+const request = require('./../nRequest.js');
 
 const sortById = function(a, b) {
   return a.id - b.id;
@@ -17,7 +17,24 @@ module.exports = function InterpretationEntry(props) {
         <div className='tall'>
           {
             props.interpretation.triggers.sort(sortById).map(function (trigger) {
-              return <TriggerEntry key={trigger.id + trigger.text} interpretation={props.interpretation} trigger={trigger} dispatch={props.dispatch}/>;
+              const interpretationId = props.interpretation.id;
+              const triggerId = trigger.id;
+              const edit = function edit(newText, element) {
+                request.editTrigger(interpretationId, triggerId, newText, function() {
+                  request.get('/api/interpretations', function(data) {
+                    data = JSON.parse(data);
+                    element.innerText = '';
+                    props.dispatch({
+                      type: 'newState',
+                      newState: {interpretations: data}
+                    });
+                  });
+                });
+              };
+              const remove = function remove() {
+              
+              };
+              return <EditableEntry key={trigger.id + trigger.text} id={trigger.id} initialText={trigger.text} edit={edit} remove={remove}/>;              
             })
           }
         </div>
@@ -30,7 +47,24 @@ module.exports = function InterpretationEntry(props) {
         <div className='ResponseTable tall inline top'>
           {
             props.interpretation.responses.sort(sortById).map(function (response) {
-              return <ResponseEntry key={response.id + response.text} interpretation={props.interpretation} response={response} dispatch={props.dispatch} />;
+              const interpretationId = props.interpretation.id;
+              const responseId = response.id;
+              const edit = function edit(newText, element) {
+                request.editResponse(interpretationId, responseId, newText, function() {
+                  request.get('/api/interpretations', function(data) {
+                    data = JSON.parse(data);
+                    element.innerText = '';
+                    props.dispatch({
+                      type: 'newState',
+                      newState: {interpretations: data}
+                    });
+                  });
+                });
+              };
+              const remove = function remove() {
+              
+              };
+              return <EditableEntry key={response.id + response.text} id={response.id} initialText={response.text} edit={edit} remove={remove}/>;
             })
           }
         </div>
