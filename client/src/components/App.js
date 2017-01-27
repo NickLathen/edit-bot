@@ -18,13 +18,7 @@ module.exports = class App extends React.Component {
     }
     return newState;
   }
-
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-  }
-
+  
   render() {
     return (
       <div className='App'>
