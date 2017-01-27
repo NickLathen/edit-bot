@@ -7,7 +7,6 @@ module.exports = {
       cb(data);
     });
   },
-
   addResponse: function addResponse(interpretationId, responseId, text, cb) {
     if (interpretationId === 'new') {
       interpretation.create().then(function(instance) {
@@ -28,5 +27,14 @@ module.exports = {
         cb();
       });
     }
+  },
+  deleteResponse: function deleteResponse(interpretationId, responseId, cb) {
+    response.destroy({
+      where: {
+        id: responseId
+      }
+    }).then(function() {
+      cb();
+    });
   }
 };

@@ -28,5 +28,14 @@ module.exports = {
         cb();
       });
     }
+  },
+  deleteTrigger: function deleteTrigger(interpretationId, triggerId, cb) {
+    trigger.destroy({
+      where: {
+        id: triggerId
+      }
+    }).then(function() {
+      cb();
+    });
   }
 };
