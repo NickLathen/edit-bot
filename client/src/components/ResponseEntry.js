@@ -2,8 +2,8 @@ const React = require('react');
 
 module.exports = function ResponseEntry(props) {
   return (
-    <div>
-      <p>{props.response.text}</p>
+    <div className='editable-entry inset short'>
+      <p className='flat' contentEditable>{props.response.text}</p>
     </div>
   );
 };

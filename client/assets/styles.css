@@ -6,10 +6,6 @@ body {
   font-size: 20px;
 }
 
-.title {
-
-}
-
 .center {
   text-align: center;
 }
@@ -22,6 +18,10 @@ body {
   text-align: right;
 }
 
+.top {
+  vertical-align: top;
+}
+
 .gray {
   color: gray;
 }
@@ -30,26 +30,65 @@ body {
   font-size: 10px;
 }
 
+.border {
+  border: 1px solid black;
+}
+
+.inset {
+  width: 90%;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
+.flat {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.short {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tall {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.inline {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.column13 {
+  width: 29%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.column23 {
+  width: 62%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.editable-entry {
+  box-shadow: 1px 1px 1px 1px black;
+  padding-left: 10px;
+  margin-bottom: 3px;
+}
+
 .App {
   width: 900px;
   margin: auto;
 }
 
-.Interpretations {
-  border: 1px solid black;
+.Avatar {
+  width: 8%;
+  margin-right: 1%;
+  margin-top: 20px;
 }
 
 .InterpretationEntry {
   width: 90%;
-  box-shadow: 1px 1px 1px 1px black;
-  margin: auto;
-  margin-bottom: 15px;
-}
-
-.Triggers, .Responses {
-  display: inline-block;
-  box-sizing: border-box;
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 40%;
 }

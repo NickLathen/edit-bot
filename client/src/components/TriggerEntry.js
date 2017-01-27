@@ -1,10 +1,9 @@
 const React = require('react');
 
 module.exports = function TriggerEntry(props) {
-  debugger;
   return (
-    <div>
-      <p>{props.trigger.text}</p>
+    <div className='editable-entry inset short'>
+      <p className='flat' contentEditable>{props.trigger.text}</p>
     </div>
   );
 };
