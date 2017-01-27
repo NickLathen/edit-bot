@@ -17,7 +17,7 @@ module.exports = {
     request.addEventListener('load', function() {
       callback(this.responseText);
     });
-    request.open('POST', '/api/trigger');
+    request.open('POST', '/api/triggers');
     request.send(JSON.stringify(data));
   },
   editResponse: function editResponse(interpretationId, responseId, text, callback) {
@@ -30,7 +30,7 @@ module.exports = {
     request.addEventListener('load', function() {
       callback(this.responseText);
     });
-    request.open('POST', '/api/trigger');
+    request.open('POST', '/api/responses');
     request.send(JSON.stringify(data));
   }
 };
