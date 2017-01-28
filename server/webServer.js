@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('./bodyParser.js');
+const compression = require('compression');
 const port = 9999;
 const appDirectory = __dirname.slice(0, __dirname.length - 7); //base app directory
 const responseController = require('./db/controllers/responseController.js');
 const triggerController = require('./db/controllers/triggerController.js');
 const interpretationController = require('./db/controllers/interpretationController.js');
 
+app.use(compression());
 app.use(bodyParser);
 app.use(express.static(appDirectory + '/client'));
 
