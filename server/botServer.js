@@ -6,6 +6,7 @@ const responseController = require('./db/controllers/responseController.js');
 const triggerController = require('./db/controllers/triggerController.js');
 const interpretationController = require('./db/controllers/interpretationController.js');
 let botDatabase;
+let memeTimeout = Date.now();
 
 var botToken = require('./../config/keys').botToken;
 
@@ -25,9 +26,16 @@ rtm.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, function () {
   }
   rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, function(message) {
     message = JSON.parse(message);
-    if (message.type && message.type === 'message' && message.text && message.text !== '' && message.user !== myId && message.subtype !== 'bot_message' && message.subtype !== 'slackbot_response') {
-      console.log(message);
-      respondTo(message);
+    if (message.type && message.type === 'message' && message.text !== '' && message.user !== myId && message.subtype !== 'bot_message' && message.subtype !== 'slackbot_response') {
+      if (message.text.indexOf('memestop') >= 0) {
+        memeTimeout = Date.now() + 15 * 60 * 1000;
+        rtm.sendMessage('Shutting up for 15 minutes, sorry :(', message.channel);
+      } else if (message.text.indexOf('memego') >= 0) {
+        memeTimeout = Date.now();
+        rtm.sendMessage('... computing dank memes!', message.channel);
+      } else if (Date.now() > memeTimeout) {
+        respondTo(message);
+      }
     }
   });
 });
@@ -45,6 +53,7 @@ function respondTo(message) {
         });
         if (responses.length > 0) {
           const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          memeTimeout = Date.now() + 15 * 1000;
           rtm.sendMessage(randomResponse.text, message.channel);
         }
       });
